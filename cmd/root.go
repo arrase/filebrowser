@@ -257,6 +257,7 @@ func quickSetup(flags *pflag.FlagSet, d pythonData) {
 		Key:           generateKey(),
 		Signup:        false,
 		CreateUserDir: false,
+    HideDotFiles: false,
 		Defaults: settings.UserDefaults{
 			Scope:  ".",
 			Locale: "en",

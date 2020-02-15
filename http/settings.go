@@ -10,6 +10,7 @@ import (
 
 type settingsData struct {
 	Signup        bool                  `json:"signup"`
+  HideDotFiles  bool                  `json:"hideDotFiles"`
 	CreateUserDir bool                  `json:"createUserDir"`
 	Defaults      settings.UserDefaults `json:"defaults"`
 	Rules         []rules.Rule          `json:"rules"`
@@ -20,6 +21,7 @@ type settingsData struct {
 
 var settingsGetHandler = withAdmin(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
 	data := &settingsData{
+    HideDotFiles:  d.settings.HideDotFiles,
 		Signup:        d.settings.Signup,
 		CreateUserDir: d.settings.CreateUserDir,
 		Defaults:      d.settings.Defaults,
@@ -39,6 +41,7 @@ var settingsPutHandler = withAdmin(func(w http.ResponseWriter, r *http.Request, 
 		return http.StatusBadRequest, err
 	}
 
+  d.settings.HideDotFiles = req.HideDotFiles
 	d.settings.Signup = req.Signup
 	d.settings.CreateUserDir = req.CreateUserDir
 	d.settings.Defaults = req.Defaults

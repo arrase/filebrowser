@@ -10,6 +10,8 @@
 
         <p><input type="checkbox" v-model="settings.createUserDir"> {{ $t('settings.createUserDir') }}</p>
 
+        <p><input type="checkbox" v-model="settings.hideDotFiles"> {{ $t('settings.hideDotFiles') }}</p>
+
         <h3>{{ $t('settings.rules') }}</h3>
         <p class="small">{{ $t('settings.globalRules') }}</p>
         <rules :rules.sync="settings.rules" />
